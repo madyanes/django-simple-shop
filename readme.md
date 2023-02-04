@@ -5,6 +5,10 @@ This simple shop system is built on top of Python 3.11 using Django framework.
 - Python 3.11
 - Pipenv
 
+## Before running locally
+1. Create a file named `.env` inside this project root directory.
+2. Add a variable `SECRET_KEY=[your_secret_key]`.
+
 ## Run locally
 1. If you're running this project for the first time: `pipenv install`
 2. Use the virtual environment: `pipenv shell`
