@@ -29,7 +29,7 @@
                     {% for product in products %}
                         <tr>
                             <td>{{ product }}</td>
-                            <td>{{ product.stock }}</td>
+                            <td>{{ product.get_stock }}</td>
                             <td>{{ product.expired }}</td>
                             <td>
                                 <a href="{% url 'catalog:product_delete' product.id %}">

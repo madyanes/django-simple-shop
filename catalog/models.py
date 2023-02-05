@@ -15,6 +15,13 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def get_stock(self) -> int:
+        """
+        Get a product stock.
+        """
+        all_products = self.productdetail_set.all()  # don't forget, a product can have multiple product details
+        return sum([product.stock for product in all_products])
+
     def __str__(self) -> str:
         return self.name
 
