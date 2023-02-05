@@ -7,7 +7,7 @@ from .models import Product
 class ProductListView(ListView):
     model = Product
     context_object_name = 'products'
-    template_name = 'templates/product_list.html'
+    template_name = 'catalog/product_list.html'
 
 class ProductDeleteView(DeleteView):
     model = Product
