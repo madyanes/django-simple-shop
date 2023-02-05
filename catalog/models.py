@@ -1,5 +1,7 @@
 import uuid
+from decimal import Decimal
 
+from django.core.validators import MinValueValidator
 from django.db import models
 
 
@@ -24,10 +26,10 @@ class ProductDetail(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)  # set null to prevent deleting the product
     expiration_date = models.DateField()
-    stock = models.IntegerField()
+    stock = models.IntegerField(validators=[MinValueValidator(1)])
     note = models.TextField(blank=True)
-    purchasing_price = models.DecimalField(max_digits=9, decimal_places=2)
-    selling_price = models.DecimalField(max_digits=9, decimal_places=2)
+    purchasing_price = models.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
+    selling_price = models.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
     created_at = models.DateTimeField(verbose_name='Entry date', auto_now_add=True)  # the date when a good is registered to the system, can't be edited
     updated_at = models.DateTimeField(auto_now=True)
 
