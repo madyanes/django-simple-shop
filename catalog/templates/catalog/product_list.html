@@ -32,6 +32,9 @@
                                 <a href="{% url 'catalog:product_delete' product.id %}">
                                     <i class="text-danger fa fa-trash"></i>
                                 </a>
+                                <a href="{% url 'catalog:product_update' product.id %}">
+                                    <i class="text-success fa fa-pencil-alt"></i>
+                                </a>
                             </td>
                         </tr>
                     {% endfor %}

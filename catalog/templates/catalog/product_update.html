@@ -1,0 +1,10 @@
+{% extends 'content.html' %}
+{% block title %}Update Product{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Apply changes!</button>
+    </form>
+{% endblock %}
