@@ -18,6 +18,7 @@
                         <th>Name</th>
                         <th>Stock</th>
                         <th>Expired</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,6 +28,11 @@
                             <td>{{ product }}</td>
                             <td>{{ product.stock }}</td>
                             <td>{{ product.expired }}</td>
+                            <td>
+                                <a href="{% url 'catalog:product_delete' product.id %}">
+                                    <i class="text-danger fa fa-trash"></i>
+                                </a>
+                            </td>
                         </tr>
                     {% endfor %}
                 {% endif %}

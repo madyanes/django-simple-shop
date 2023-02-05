@@ -1,0 +1,10 @@
+{% extends 'content.html' %}
+{% block title %}Detele Product{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure want to delete {{ product }}?</p>
+        <button type="submit">Yes, delete permanently!</button>
+    </form>
+{% endblock %}
