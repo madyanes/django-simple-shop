@@ -8,6 +8,7 @@ class ProductListView(ListView):
     model = Product
     context_object_name = 'products'
     template_name = 'catalog/product_list.html'
+    fields = ['name']
 
 class ProductDeleteView(DeleteView):
     model = Product
@@ -27,4 +28,4 @@ class ProductCreateView(CreateView):
     model = Product
     template_name = 'catalog/product_create.html'
     success_url = reverse_lazy('catalog:product_list')
-    fields = ['name', 'expired', 'stock']  # this attribute is mandatory
+    fields = ['name']  # this attribute is mandatory
