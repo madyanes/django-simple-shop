@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import DeleteView, ListView, UpdateView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from .models import Product
 
@@ -22,3 +22,9 @@ class ProductUpdateView(UpdateView):
     success_url = reverse_lazy('catalog:product_list')
 
     fields = ['name']  # this attribute is mandatory
+
+class ProductCreateView(CreateView):
+    model = Product
+    template_name = 'catalog/product_create.html'
+    success_url = reverse_lazy('catalog:product_list')
+    fields = ['name', 'expired', 'stock']  # this attribute is mandatory
