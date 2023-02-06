@@ -7,8 +7,8 @@ from .models import Product
 class ProductListView(ListView):
     model = Product
     context_object_name = 'products'
+    queryset = Product.objects.filter(is_active=True)
     template_name = 'catalog/product_list.html'
-    fields = ['name']
 
 class ProductDeleteView(DeleteView):
     model = Product
