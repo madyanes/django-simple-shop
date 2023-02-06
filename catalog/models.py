@@ -31,7 +31,7 @@ class ProductDetail(models.Model):
     Because the purchased products sometime have different expiration date, or they purchased with different prices.
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)  # set null to prevent deleting the product
+    product = models.ForeignKey(Product, on_delete=models.PROTECT, null=True)  # the referenced object (Product) isn't allowed to be deleted
     expiration_date = models.DateField()
     stock = models.IntegerField(validators=[MinValueValidator(1)])
     note = models.TextField(blank=True)
@@ -41,4 +41,6 @@ class ProductDetail(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f'{self.product.name} ({self.id})'  # showing product name and ProductDetail ID on admin form
+        product_name = self.product
+        if product_name is None: product_name = '❓'
+        return f'{product_name} ({self.id})'  # showing product name and ProductDetail ID on admin form
