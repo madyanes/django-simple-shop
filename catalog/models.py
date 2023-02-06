@@ -15,6 +15,10 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    # model relations
+    category = models.ForeignKey(to='ProductCategory', on_delete=models.PROTECT, null=True)
+    unit = models.ForeignKey(to='ProductUnit', on_delete=models.PROTECT, null=True)
+
     def get_stock(self) -> int:
         """
         Get a product stock.
@@ -44,3 +48,29 @@ class ProductDetail(models.Model):
         product_name = self.product
         if product_name is None: product_name = '❓'
         return f'{product_name} ({self.id})'  # showing product name and ProductDetail ID on admin form
+
+class ProductCategory(models.Model):
+    name = models.CharField(verbose_name='category', max_length=50, unique=True, help_text='ex: snack')
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = 'Product Category'
+        verbose_name_plural = 'Product Categories'
+
+class ProductUnit(models.Model):
+    name = models.CharField(verbose_name='Unit', max_length=50, unique=True, help_text='ex: pieces')
+    code = models.CharField(max_length=10, help_text='ex: pcs')
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+        verbose_name = 'Product Unit'
