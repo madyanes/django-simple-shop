@@ -16,6 +16,7 @@ Do these steps if this is your first time running the project:
 1. Use the virtual environment: `pipenv shell`
 2. Migrate the database: `python manage.py migrate`
 3. Inserting dummy data to the database: `python manage.py loaddata [*.json]`
+   
    For example we want to insert dummy data for superuser and all models of catalog app: `python manage.py loaddata users.json catalog.json`
 
    Available dummy data:
@@ -23,6 +24,6 @@ Do these steps if this is your first time running the project:
    |-|-|
    | `users.json` | initial superuser data |
    | `catalog.json` | initial data for all models within catalog app |
-   -----------------------------------------------------------------
+   
 4. Make sure you have a superuser to login to django admin page: `python manage.py createsuperuser`, or if you're using dummy data, skip this step.
 5. Run the server: `python manage.py runserver 8000`
