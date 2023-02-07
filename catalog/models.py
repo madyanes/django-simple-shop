@@ -41,6 +41,7 @@ class ProductDetail(models.Model):
     note = models.TextField(blank=True)
     purchasing_price = models.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
     selling_price = models.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
+    currency = models.ForeignKey(to='Currency', on_delete=models.PROTECT, null=True)
     created_at = models.DateTimeField(verbose_name='Entry date', auto_now_add=True)  # the date when a good is registered to the system, can't be edited
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -49,6 +50,16 @@ class ProductDetail(models.Model):
         if product_name is None: product_name = '❓'
         return f'{product_name} ({self.id})'  # showing product name and ProductDetail ID on admin form
 
+class Currency(models.Model):
+    name = models.CharField(max_length=20, help_text='Indonesian Rupiah')
+    code = models.CharField(max_length=3, help_text='IDR')
+
+    def __str__(self):
+        return self.code
+
+    class Meta:
+        verbose_name_plural = 'Currencies'
+    
 class ProductCategory(models.Model):
     name = models.CharField(verbose_name='category', max_length=50, unique=True, help_text='ex: snack')
     description = models.TextField(blank=True)
