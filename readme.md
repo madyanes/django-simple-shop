@@ -27,3 +27,6 @@ Do these steps if this is your first time running the project:
    
 4. Make sure you have a superuser to login to django admin page: `python manage.py createsuperuser`, or if you're using dummy data, skip this step.
 5. Run the server: `python manage.py runserver 8000`
+---
+## My abstract idea
+![an image of my abstract idea](docs/img/illustration-abstract.png)
