@@ -13,6 +13,8 @@ class CurrencyAdmin(admin.ModelAdmin):
     list_display = ['code', 'name']
 
 class ProductAdmin(admin.ModelAdmin):
+    list_display = ['name', 'category', 'unit', 'is_active']
+    list_filter = ['is_active', 'category', 'unit']
     actions = [make_active, make_inactive]
 
 class ProductDetailAdmin(admin.ModelAdmin):
