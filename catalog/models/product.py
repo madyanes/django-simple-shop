@@ -1,15 +1,14 @@
 import uuid
 from django.db import models
+from shop.models import BaseModel
 
-class Product(models.Model):
+class Product(BaseModel):
     """
     The products entered to the system should not be deleted.
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50)
     is_active = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     # model relations
     category = models.ForeignKey(to='ProductCategory', on_delete=models.PROTECT, null=True)
