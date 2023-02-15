@@ -19,14 +19,7 @@ class InvoiceAdmin(admin.ModelAdmin):
         return form
 
 class InvoiceItemAdmin(admin.ModelAdmin):
-    list_display = ['product', 'quantity', 'price', 'invoice']
-
-    # filter products to show only unbinded products with invoice items
-    def get_form(self, request, obj=None, **kwargs):
-        form = super().get_form(request, obj, **kwargs)
-        print(f'isi form============={form.base_fields}')
-        form.base_fields['product'].queryset = ProductDetail.objects.filter(invoiceitem__isnull=True)
-        return form
+    list_display = ['product_detail', 'quantity', 'price', 'invoice']
 
 admin.site.register(Invoice, InvoiceAdmin)
 admin.site.register(InvoiceItem, InvoiceItemAdmin)

@@ -9,6 +9,7 @@ from catalog.models import Currency, ProductDetail
 
 class Invoice(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    product_detail = models.ManyToManyField(ProductDetail, through='InvoiceItem')
     salesman = models.ForeignKey(to=User, on_delete=models.PROTECT)
     currency = models.ForeignKey(to=Currency, on_delete=models.PROTECT)
     due_date = models.DateTimeField()
@@ -20,12 +21,12 @@ class Invoice(models.Model):
 
 class InvoiceItem(models.Model):
     invoice = models.ForeignKey(to=Invoice, on_delete=models.PROTECT)
-    product = models.OneToOneField(to=ProductDetail, on_delete=models.PROTECT, primary_key=True)
+    product_detail = models.ForeignKey(to=ProductDetail, on_delete=models.PROTECT)
     quantity = models.FloatField(validators=[MinValueValidator(float('0.01'))])
     price = models.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
 
     def __str__(self):
-        return f'{self.pk}/{self.product.product.name}'
+        return f'{self.pk}/{self.product_detail.product.name}'
 
     class Meta:
         verbose_name = 'Invoice Item'
