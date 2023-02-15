@@ -4,7 +4,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from shop.models import BaseModel
 
-class ProductDetail(models.Model):
+class ProductDetail(BaseModel):
     """
     The detail of the product.
     Because the purchased products sometime have different expiration date, or they purchased with different prices.
