@@ -2,6 +2,7 @@ import uuid
 from decimal import Decimal
 from django.core.validators import MinValueValidator
 from django.db import models
+from shop.models import BaseModel
 
 class ProductDetail(models.Model):
     """
@@ -16,8 +17,6 @@ class ProductDetail(models.Model):
     purchasing_price = models.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
     selling_price = models.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
     currency = models.ForeignKey(to='Currency', on_delete=models.PROTECT, null=True)
-    created_at = models.DateTimeField(verbose_name='Entry date', auto_now_add=True)  # the date when a good is registered to the system, can't be edited
-    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
         product_name = self.product

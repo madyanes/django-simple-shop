@@ -25,8 +25,6 @@ class ProductDetailAdmin(admin.ModelAdmin):
         'expiration_date',
         'selling_price',
         'currency',
-        'created_at',
-        'updated_at',
     )
 
 class ProductUnitAdmin(admin.ModelAdmin):
