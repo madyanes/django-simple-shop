@@ -1,10 +1,6 @@
 import uuid
-from decimal import Decimal
-
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator
 from django.db import models
-
 from catalog.models import Currency, ProductDetail
 
 class Invoice(models.Model):
@@ -18,15 +14,3 @@ class Invoice(models.Model):
 
     def __str__(self) -> str:
         return f'{self.salesman.username} / {self.created_at}'
-
-class InvoiceItem(models.Model):
-    invoice = models.ForeignKey(to=Invoice, on_delete=models.PROTECT)
-    product_detail = models.ForeignKey(to=ProductDetail, on_delete=models.PROTECT)
-    quantity = models.FloatField(validators=[MinValueValidator(float('0.01'))])
-    price = models.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
-
-    def __str__(self):
-        return f'{self.pk}/{self.product_detail.product.name}'
-
-    class Meta:
-        verbose_name = 'Invoice Item'
