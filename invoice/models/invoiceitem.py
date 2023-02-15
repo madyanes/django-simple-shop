@@ -1,9 +1,10 @@
 from decimal import Decimal
 from django.core.validators import MinValueValidator
 from django.db import models
+from shop.models import BaseModel
 from catalog.models import ProductDetail
 
-class InvoiceItem(models.Model):
+class InvoiceItem(BaseModel):
     invoice = models.ForeignKey(to='Invoice', on_delete=models.PROTECT)
     product_detail = models.ForeignKey(to=ProductDetail, on_delete=models.PROTECT)
     quantity = models.FloatField(validators=[MinValueValidator(float('0.01'))])
