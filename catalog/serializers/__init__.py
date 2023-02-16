@@ -1,1 +1,3 @@
 from .product_serializer import ProductSerializer
+from .product_detail_serializer import ProductDetailSerializer
+from .currency_serializer import CurrencySerializer

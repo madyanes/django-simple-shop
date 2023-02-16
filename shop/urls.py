@@ -18,7 +18,7 @@ from django.urls import include, path
 
 from rest_framework import routers
 
-from catalog.viewsets import ProductViewSet
+from catalog.viewsets import CurrencyViewSet, ProductViewSet, ProductDetailViewSet
 from .views import UserViewSet
 
 # Django Admin Interface (custom)
@@ -28,8 +28,10 @@ admin.site.site_title = 'Simple Shop Administration'
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-router.register(r'products', ProductViewSet)
+router.register(r'users', UserViewSet, basename='user')
+router.register(r'products', ProductViewSet, basename='product')
+router.register(r'product/detail', ProductDetailViewSet, basename='product-detail')
+router.register(r'currency', CurrencyViewSet, basename='currency')
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
