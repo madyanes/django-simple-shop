@@ -1,12 +1,18 @@
-from rest_framework import viewsets, permissions
+from rest_framework import mixins, viewsets, permissions
 
 from catalog.permissions import IsAdminOrReadOnly
 from .models import Currency, Product, ProductDetail
 from .serializers import CurrencySerializer, ProductDetailSerializer, ProductSerializer
 
-class ProductViewSet(viewsets.ModelViewSet):
+class ProductViewSet(mixins.CreateModelMixin,
+                     mixins.RetrieveModelMixin,
+                     mixins.UpdateModelMixin,
+                     mixins.DestroyModelMixin,
+                     mixins.ListModelMixin,
+                     viewsets.GenericViewSet):
     """
-    API endpoint that allows users to be viewed or edited.
+    The shopkeeper is allowed to CREATE, RETRIEVE, UPDATE, DELETE, LIST the product.
+    Others are allowed to RETRIEVE, LIST the product.
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer

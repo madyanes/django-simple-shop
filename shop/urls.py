@@ -26,18 +26,6 @@ admin.site.site_header = 'Simple Shop Administration'
 admin.site.index_title = 'Site Administration'
 admin.site.site_title = 'Simple Shop Administration'
 
-productdetail_list = ProductDetailViewSet.as_view({
-    'get': 'list',
-    'post': 'create'
-})
-
-productdetail_detail = ProductDetailViewSet.as_view({
-    'get': 'retrieve',
-    'put': 'update',
-    'patch': 'partial_update',
-    'delete': 'destroy'
-})
-
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet, basename='user')
