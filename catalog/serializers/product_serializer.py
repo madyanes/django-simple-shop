@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
 from catalog.models import Product
+# from catalog.serializers import ProductCategorySerializer
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
-    # product_detail = 'ProductDetailSerializer()'
     class Meta:
         model = Product
-        fields = ['url', 'id', 'name', 'is_active', 'created_at', 'updated_at']
+        fields = '__all__'

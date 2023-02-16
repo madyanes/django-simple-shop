@@ -18,7 +18,7 @@ from django.urls import include, path
 
 from rest_framework import routers
 
-from catalog.viewsets import CurrencyViewSet, ProductViewSet, ProductDetailViewSet
+from catalog.viewsets import CurrencyViewSet, ProductViewSet, ProductDetailViewSet, ProductCategoryViewSet, ProductUnitViewSet
 from .views import UserViewSet
 
 # Django Admin Interface (custom)
@@ -30,6 +30,8 @@ admin.site.site_title = 'Simple Shop Administration'
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet, basename='user')
 router.register(r'products', ProductViewSet, basename='product')
+router.register(r'products/category', ProductCategoryViewSet, basename='productcategory')
+router.register(r'products/unit', ProductUnitViewSet, basename='productunit')
 router.register(r'product/detail', ProductDetailViewSet, basename='productdetail')
 router.register(r'currency', CurrencyViewSet, basename='currency')
 
