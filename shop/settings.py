@@ -126,5 +126,6 @@ FIXTURE_DIRS = ['fixtures']  # without this. fixtures will ONLY be searched with
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-    ]
+    ],
+    'EXCEPTION_HANDLER': 'shop.exception_handler.shop_exception'
 }
