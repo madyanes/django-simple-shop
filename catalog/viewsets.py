@@ -35,7 +35,7 @@ class ProductDetailViewSet(mixins.CreateModelMixin,
                            viewsets.GenericViewSet):
     queryset = ProductDetail.objects.all()
     serializer_class = ProductDetailSerializer
-    permission_classes = [permissions.IsAuthenticated, IsAdminOrReadOnly]
+    permission_classes = [permissions.IsAdminUser]
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
