@@ -1,4 +1,4 @@
-from rest_framework import mixins, viewsets, permissions, status
+from rest_framework import exceptions, mixins, viewsets, permissions, status
 from rest_framework.response import Response
 
 from catalog.exceptions import ShopDeleteProtectedException
@@ -36,6 +36,12 @@ class ProductDetailViewSet(mixins.CreateModelMixin,
     queryset = ProductDetail.objects.all()
     serializer_class = ProductDetailSerializer
     permission_classes = [permissions.IsAuthenticated, IsAdminOrReadOnly]
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        if bool(instance.invoiceitem_set.count()):
+            raise ShopDeleteProtectedException(f'This instance ({instance}) has a relation with other instance(s). Impossible to delete.')
+        return super().destroy(request, *args, **kwargs)
 
 class ProductCategoryViewSet(mixins.CreateModelMixin,
                            mixins.RetrieveModelMixin,
