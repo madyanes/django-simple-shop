@@ -30,10 +30,10 @@ admin.site.site_title = 'Simple Shop Administration'
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet, basename='user')
 router.register(r'products', ProductViewSet, basename='product')
-router.register(r'products/category', ProductCategoryViewSet, basename='productcategory')
-router.register(r'products/unit', ProductUnitViewSet, basename='productunit')
-router.register(r'product/detail', ProductDetailViewSet, basename='productdetail')
-router.register(r'currency', CurrencyViewSet, basename='currency')
+router.register(r'product-categories', ProductCategoryViewSet, basename='productcategory')
+router.register(r'product-units', ProductUnitViewSet, basename='productunit')
+router.register(r'product-details', ProductDetailViewSet, basename='productdetail')
+router.register(r'currencies', CurrencyViewSet, basename='currency')
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
