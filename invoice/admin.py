@@ -18,8 +18,5 @@ class InvoiceAdmin(admin.ModelAdmin):
         # form.base_fields['product'].queryset = InvoiceItem.objects.filter(product__isnull=True)
         return form
 
-class InvoiceItemAdmin(admin.ModelAdmin):
-    list_display = ['product_detail', 'quantity', 'price', 'invoice']
-
 admin.site.register(Invoice, InvoiceAdmin)
-admin.site.register(InvoiceItem, InvoiceItemAdmin)
+admin.site.register(InvoiceItem)
