@@ -51,7 +51,7 @@ class ProductCategoryViewSet(mixins.CreateModelMixin,
                            viewsets.GenericViewSet):
     queryset = ProductCategory.objects.all()
     serializer_class = ProductCategorySerializer
-    permission_classes = [permissions.IsAuthenticated, IsAdminOrReadOnly]
+    permission_classes = [permissions.IsAdminUser]
 
 class ProductUnitViewSet(mixins.CreateModelMixin,
                            mixins.RetrieveModelMixin,
