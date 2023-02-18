@@ -78,4 +78,4 @@ class ProductUnitViewSet(mixins.CreateModelMixin,
 class CurrencyViewSet(viewsets.ModelViewSet):
     queryset = Currency.objects.all()
     serializer_class = CurrencySerializer
-    permission_classes = [permissions.IsAuthenticated, IsAdminOrReadOnly]
+    permission_classes = [permissions.IsAdminUser]
