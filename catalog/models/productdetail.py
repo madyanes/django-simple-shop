@@ -16,7 +16,6 @@ class ProductDetail(BaseModel):
     note = models.TextField(blank=True)
     purchasing_price = models.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
     selling_price = models.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
-    currency = models.ForeignKey(to='Currency', on_delete=models.PROTECT, null=True)
 
     def __str__(self) -> str:
         product_name = self.product

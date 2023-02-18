@@ -3,8 +3,8 @@ from rest_framework.response import Response
 
 from catalog.exceptions import ShopDeleteProtectedException
 from catalog.permissions import IsAdminOrReadOnly
-from .models import Currency, Product, ProductCategory, ProductDetail, ProductUnit
-from .serializers import CurrencySerializer, ProductDetailSerializer, ProductSerializer, ProductCategorySerializer, ProductUnitSerializer
+from .models import Product, ProductCategory, ProductDetail, ProductUnit
+from .serializers import ProductDetailSerializer, ProductSerializer, ProductCategorySerializer, ProductUnitSerializer
 
 class ProductViewSet(mixins.CreateModelMixin,
                      mixins.RetrieveModelMixin,
@@ -74,11 +74,6 @@ class ProductUnitViewSet(mixins.CreateModelMixin,
         if bool(instance.product_set.count()):
             raise ShopDeleteProtectedException(f'This instance ({instance}) has a relation with other instance(s). Impossible to delete.')
         return super().destroy(request, *args, **kwargs)
-
-class CurrencyViewSet(viewsets.ModelViewSet):
-    queryset = Currency.objects.all()
-    serializer_class = CurrencySerializer
-    permission_classes = [permissions.IsAdminUser]
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()

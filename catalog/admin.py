@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Currency, Product, ProductCategory, ProductDetail, ProductUnit
+from .models import Product, ProductCategory, ProductDetail, ProductUnit
 
 @admin.action(description='Change to active')
 def make_active(modeladmin, request, queryset):
@@ -24,7 +24,6 @@ class ProductDetailAdmin(admin.ModelAdmin):
         'stock',
         'expiration_date',
         'selling_price',
-        'currency',
     )
 
 class ProductUnitAdmin(admin.ModelAdmin):
@@ -33,7 +32,6 @@ class ProductUnitAdmin(admin.ModelAdmin):
 class ProductCategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')
 
-admin.site.register(Currency, CurrencyAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductCategory, ProductCategoryAdmin)
 admin.site.register(ProductDetail, ProductDetailAdmin)

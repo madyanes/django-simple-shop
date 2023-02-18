@@ -1,5 +1,4 @@
 from .product_serializer import ProductSerializer
 from .product_detail_serializer import ProductDetailSerializer
-from .currency_serializer import CurrencySerializer
 from .product_category import ProductCategorySerializer
 from .product_unit import ProductUnitSerializer

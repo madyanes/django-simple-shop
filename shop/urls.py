@@ -18,7 +18,7 @@ from django.urls import include, path
 
 from rest_framework import routers
 
-from catalog.viewsets import CurrencyViewSet, ProductViewSet, ProductDetailViewSet, ProductCategoryViewSet, ProductUnitViewSet
+from catalog.viewsets import ProductViewSet, ProductDetailViewSet, ProductCategoryViewSet, ProductUnitViewSet
 from .views import UserViewSet
 
 # Django Admin Interface (custom)
@@ -33,7 +33,6 @@ router.register(r'products', ProductViewSet, basename='product')
 router.register(r'product-categories', ProductCategoryViewSet, basename='productcategory')
 router.register(r'product-units', ProductUnitViewSet, basename='productunit')
 router.register(r'product-details', ProductDetailViewSet, basename='productdetail')
-router.register(r'currencies', CurrencyViewSet, basename='currency')
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
