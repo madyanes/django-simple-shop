@@ -69,6 +69,12 @@ class ProductUnitViewSet(mixins.CreateModelMixin,
     serializer_class = ProductUnitSerializer
     permission_classes = [permissions.IsAdminUser]
 
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        if bool(instance.product_set.count()):
+            raise ShopDeleteProtectedException(f'This instance ({instance}) has a relation with other instance(s). Impossible to delete.')
+        return super().destroy(request, *args, **kwargs)
+
 class CurrencyViewSet(viewsets.ModelViewSet):
     queryset = Currency.objects.all()
     serializer_class = CurrencySerializer
