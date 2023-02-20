@@ -5,7 +5,7 @@ from catalog.models import Product
 
 
 class Cart(BaseModel):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(to=User, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product, through='CartItem')
 
     def __str__(self):
