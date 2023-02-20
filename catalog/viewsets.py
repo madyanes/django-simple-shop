@@ -74,9 +74,3 @@ class ProductUnitViewSet(mixins.CreateModelMixin,
         if bool(instance.product_set.count()):
             raise ShopDeleteProtectedException(f'This instance ({instance}) has a relation with other instance(s). Impossible to delete.')
         return super().destroy(request, *args, **kwargs)
-
-    def destroy(self, request, *args, **kwargs):
-        instance = self.get_object()
-        if bool(instance.productdetail_set.count()) or bool(instance.invoice_set.count()):
-            raise ShopDeleteProtectedException(f'This instance ({instance}) has a relation with other instance(s). Impossible to delete.')
-        return super().destroy(request, *args, **kwargs)
