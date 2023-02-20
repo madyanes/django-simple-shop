@@ -15,3 +15,9 @@ class InvoiceViewSet(viewsets.ModelViewSet):
             raise ShopDeleteProtectedException(
                 f'This instance ({instance}) has a relation with other instance(s). Impossible to delete.')
         return super().destroy(request, *args, **kwargs)
+
+
+class InvoiceItemViewSet(viewsets.ModelViewSet):
+    queryset = Invoice.objects.all()
+    serializer_class = InvoiceSerializer
+    permission_classes = [permissions.IsAdminUser]
