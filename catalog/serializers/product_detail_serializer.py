@@ -6,4 +6,4 @@ class ProductDetailSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ProductDetail
-        fields = ['url', 'id', 'product', 'expiration_date', 'stock', 'note', 'purchasing_price', 'selling_price', 'currency']
+        fields = ['url', 'id', 'product', 'expiration_date', 'stock', 'note', 'purchasing_price', 'selling_price']
