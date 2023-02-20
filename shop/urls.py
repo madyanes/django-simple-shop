@@ -37,7 +37,7 @@ router.register(r'product-details', ProductDetailViewSet, basename='productdetai
 router.register(r'invoice', InvoiceViewSet, basename='invoice')
 router.register(r'invoice-items', InvoiceItemViewSet, basename='invoice-item')
 router.register(r'cart', CartViewSet, basename='cart')
-router.register(r'cart-item', CartItemViewSet, basename='cart-item')
+router.register(r'cart-item', CartItemViewSet, basename='cartitem')
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
