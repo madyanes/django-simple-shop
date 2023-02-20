@@ -1,5 +1,6 @@
 # Simple Shop
-This simple shop system is built on top of Python 3.11 using Django framework.
+This simple shop system is built on top of Python 3.11 using Django framework. <br/>
+**_Warning: The project isn't stable yet / under development._**
 
 ## Requirements
 - Python 3.11
@@ -37,9 +38,16 @@ Do these steps if this is your first time running the project:
 
 Currently available permissions:
 
-|           | Admin   | Customer | Guest  |
-|-----------|---------|----------|--------|
-| `Product` | LCRUD   | LR       | LR     |
+|                    | Admin   | Customer | Guest |
+|--------------------|---------|----------|-------|
+| `Product`          | LCRUD   | LR       | LR    |
+| `ProductDetail`    | LCRUD   | LR       | LR    |
+| `ProductCategory`  | LCRUD   | LR       | LR    |
+| `ProductUnit`      | LCRUD   | LR       | LR    |
+| `Cart`             | LCRUD   | LR       | LR    |
+| `CartItem`         | LCRUD   | LR       | LR    |
+| `Invoice`          | LCRUD   | LR       | LR    |
+| `InvoiceItem`      | LCRUD   | LR       | LR    |
 ---
 ## My abstract idea
 ![an image of my abstract idea](docs/img/illustration-abstract.png)
