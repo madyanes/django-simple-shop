@@ -18,7 +18,17 @@ class InvoiceAdmin(admin.ModelAdmin):
         # form.base_fields['product'].queryset = InvoiceItem.objects.filter(product__isnull=True)
         return form
 
+
+class CartItemInline(admin.TabularInline):
+    model = CartItem
+    extra = 3
+
+
+class CartAdmin(admin.ModelAdmin):
+    inlines = [CartItemInline]
+
+
 admin.site.register(Invoice, InvoiceAdmin)
 admin.site.register(InvoiceItem)
-admin.site.register(Cart)
+admin.site.register(Cart, CartAdmin)
 admin.site.register(CartItem)
