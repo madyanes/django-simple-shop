@@ -9,3 +9,11 @@ class IsAdminOrReadOnly(permissions.BasePermission):
             request.method in permissions.SAFE_METHODS or
             request.user.is_staff
         )
+
+
+class IsOwner(permissions.BasePermission):
+    """
+    The request is only for the owner of that object/instance.
+    """
+    def has_object_permission(self, request, view, obj):
+        return obj.user == request.user
