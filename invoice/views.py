@@ -24,8 +24,7 @@ class InvoiceItemViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAdminUser]
 
 
-class CartViewSet(mixins.RetrieveModelMixin,
-                  viewsets.GenericViewSet):
+class CartViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
     permission_classes = [permissions.IsAuthenticated, shop_permissions.IsOwner]
@@ -34,4 +33,4 @@ class CartViewSet(mixins.RetrieveModelMixin,
 class CartItemViewSet(viewsets.ModelViewSet):
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated, shop_permissions.IsOwner]
