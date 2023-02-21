@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from catalog.models import ProductDetail
-from .models import Invoice, InvoiceItem
+from .models import Cart, CartItem, Invoice, InvoiceItem
 
 class InvoiceItemInline(admin.TabularInline):
     model = InvoiceItem
@@ -20,3 +20,5 @@ class InvoiceAdmin(admin.ModelAdmin):
 
 admin.site.register(Invoice, InvoiceAdmin)
 admin.site.register(InvoiceItem)
+admin.site.register(Cart)
+admin.site.register(CartItem)
