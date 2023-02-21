@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import permissions, viewsets
+from rest_framework import mixins, permissions, viewsets
 from catalog.exceptions import ShopDeleteProtectedException
 from invoice.models import Cart, CartItem, Invoice, InvoiceItem
 from invoice.serializers import CartSerializer, CartItemSerializer, InvoiceSerializer, InvoiceItemSerializer
@@ -23,10 +23,11 @@ class InvoiceItemViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAdminUser]
 
 
-class CartViewSet(viewsets.ModelViewSet):
+class CartViewSet(mixins.RetrieveModelMixin,
+                  viewsets.GenericViewSet):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class CartItemViewSet(viewsets.ModelViewSet):
